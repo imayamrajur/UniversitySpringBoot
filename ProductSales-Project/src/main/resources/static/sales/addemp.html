@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Add Employee</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			//getAllEmployee();
+
+
+			$("#addEmployee").click(function () {
+				$("#addEmployee").prop("disabled", true);
+				var addEmp = {};
+				let formData = new FormData();
+				addEmp.empId = $('#empid').val();
+				addEmp.firstName = $('#firstname').val();
+				addEmp.lastName = $('#lastname').val();
+				addEmp.dob = $('#dob').val();
+				addEmp.gender = $('#gender').val();
+				addEmp.doj = $('#doj').val();
+				
+				alert(addEmp);
+				var addEmpObj = JSON.stringify(addEmp);
+				alert(addEmpObj);
+				$.ajax({
+					url: "http://localhost:8080/sales/employee/add",
+					method: "POST",
+					data: addEmpObj,
+					contentType: "application/json",
+					success: function (data) {
+						console.log(data);
+						//alert(data);
+						//getAllEmployee();
+					},
+					error: function (err) {
+						alert("save error");
+					}
+				});
+			});
+
+
+		});
+
+	</script>
+
+</head>
+
+<body>
+	<div class="container">
+		<h2>Add Employee Details</h2>
+
+		<div class="container">
+
+			<form>
+				<table align="center">
+
+					<tr>
+						<td align="center">
+
+							<head>
+								<h2>Add Employee</h2>
+							</head>
+						</td>
+					</tr>
+					</tr>
+					<tr>
+						<div class="form-group">
+							<td><label>Employee Id</label></td>
+							<td><input type="text" name="empid" id="empid" placeholder="Enter Employee ID" /></td>
+					</tr>
+		</div>
+		<div class="form-group">
+			<tr>
+				<td><label>First Name</label></td>
+				<td><input type="text" name="firstname" id="firstname" placeholder="First Name" /></td>
+			</tr>
+		</div>
+		<div class="form-group">
+			<tr>
+				<td><label>Last Name</label></td>
+				<td><input type="text" name="lastname" id="lastname" placeholder="Last Name" /></td>
+			</tr>
+		</div>
+		<div class="form-group">
+			<tr>
+				<td><label>Date of Birth</label></td>
+				<td><input type="date" name="dob" id="dob" /></td>
+			</tr>
+		</div>
+		<div class="form-group">
+			<tr>
+				<td><label>Gender</label></td>
+				<td>
+					<div class="form-inline">
+						<label><input type="radio" id="gender" name="gender" value="male"> Male</label>
+						<label><input type="radio" id="gender" name="gender" value="female"> Female</label>
+					</div>
+				</td>
+			</tr>
+		</div>
+		<div class="form-group">
+			<tr>
+				<td><label>Date of Join</label></td>
+				<td><input type="date" name="doj" id="doj" placeholder="click icon" /></td>
+			</tr>
+		</div>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<div class="form-group">
+			<tr>
+				<td></td>
+				<td><button type="button" class="btn btn-primary" id="addEmployee">Submit</button>
+					<button type="button" class="btn btn-danger" id="addEmpReset">Reset</button></td>
+			</tr>
+		</div>
+		</table>
+
+		</form>
+
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+String a[]={"Siva","Abc"};
+for(String i:a){
+	System.out.println(i);
+}short r = 33000;System.out.print(r);static int a=20;a=40;System.out.println(a);static {	System.out.println("Raju");}if(true){	System.out.println("True");}else{	System.out.println("False");}char a='A';char b='B';char c=(char)a+b;int d =a+b;System.out.println(c);System.out.println(d);int a=10;int b=20;System.out.println(a+b);

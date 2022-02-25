@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Add product</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+
+			$("#addproductitemsbtn").click(function () {
+				$("#addproductitemsbtn").prop("disabled", true);
+				var addProductItems = {};
+				addProductItems.productName = $('#prodname').val();
+				addProductItems.unitPrice = $('#unitprice').val();
+				addProductItems.commissionPercent = $('#compercent').val();
+				var addProductItemsObj = JSON.stringify(addProductItems);
+				$.ajax({
+					url: "http://localhost:8080/sales/salesDetails/addSales",
+					method: "POST",
+					data: addProductItemsObj,
+					contentType: "application/json",
+					success: function (data) {
+						console.log(data);
+					},
+					error: function (err) {
+						alert("save error");
+					}
+				});
+			});
+
+		});
+
+
+	</script>
+
+</head>
+
+<div class="container">
+
+	<body>
+		<form>
+			<table align="center">
+
+				<tr>
+					<td align="center">
+
+						<head>
+							<h2>Add Sales</h2>
+						</head>
+					</td>
+				</tr>
+				</tr>
+				<tr>
+					<div class="form-group">
+						<td><label>Emp-ID - Name</label></td>
+						<td><select class="browser-default custom-select">
+								<option selected>Emp-ID - Name</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select></td>
+				</tr>
+</div>
+<tr>
+	<div class="form-group">
+		<td><label>Product-ID - Name</label></td>
+		<td><select class="browser-default custom-select">
+				<option selected>Product-ID - Name</option>
+				<option value="1">One</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+			</select></td>
+</tr>
+</div>
+<div class="form-group">
+	<tr>
+		<td><label>Unit Price</label></td>
+		<td><input type="text" name="quatity" id="quatity" /></td>
+	</tr>
+</div>
+<div class="form-group">
+	<tr>
+		<td><label>Quatity</label></td>
+		<td><input type="text" name="quatity" id="quatity" /></td>
+	</tr>
+</div>
+<div class="form-group">
+	<tr>
+		<td><label>Commission Percent</label></td>
+		<td><input type="text" name="compercent" id="compercent" /></td>
+	</tr>
+</div>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+<div class="form-group">
+	<tr>
+		<td></td>
+		<td><button type="button" class="btn btn-primary" id="addproductitemsbtn">Submit</button>
+			<button type="button" class="btn btn-danger" id="resetproductitemsbtn">Reset</button></td>
+	</tr>
+</div>
+</table>
+
+</form>
+
+</div>
+</body>
+
+</html>
