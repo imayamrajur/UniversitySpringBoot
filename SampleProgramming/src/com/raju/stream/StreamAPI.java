@@ -12,6 +12,8 @@ public class StreamAPI {
 		
 		System.out.println("________________");
 		
+		
+		
 		Stream<Integer> list = Stream.iterate(1, n->n+1);
 		list.skip(0).limit(50).forEach(System.out::println);
 		
@@ -19,9 +21,20 @@ public class StreamAPI {
 		List<Integer> li = streamList.collect(Collectors.toList());
 		li.stream().filter(a->a>=5).map(a->a*1).forEach(a->System.out.print(" "+a));
 		li.stream().filter(a->a<5).collect(Collectors.toList()).forEach(b->System.out.print(" "+b));
-	int a =	li.stream().filter(a->a%2==1)).count();
-		
-
+		System.out.println("________________");
+	int a =	(int)li.stream().filter(b->b%2==1).count();
+	int r =	(int)li.stream().count();
+	System.out.println("________________");
+	System.out.println(a);
+	System.out.println("________________");
+	System.out.println(r);
+	
+	/*
+	 * //List<Integer> slist = streamList.sorted().collect(Collectors.toList());
+	 * 
+	 * slist.forEach(s->System.out.print(" "+s+" "));
+	 * System.out.println("________________");
+	 */
 	}
 
 }

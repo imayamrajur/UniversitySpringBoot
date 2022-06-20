@@ -38,9 +38,9 @@ public class SerializableMain {
 		}
 		
 		System.out.println("Deserialization");		
-		System.out.println(s.empId);
-		System.out.println(s.empName);
-		System.out.println(s.salary);
+		System.out.println("Employee ID ="+s.empId);
+		System.out.println("Employee Name ="+s.empName);
+		System.out.println("Salary ="+s.salary);
 
 	}
 
